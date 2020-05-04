@@ -5,3 +5,9 @@ sum(0, []).
 sum(Total, [Head|Tail]) :- sum(Sum, Tail), Total is Head + Sum.
 
 average(Average, List) :- sum(Sum, List), count(Count, List), Average is Sum/Count.
+
+max(X,Y,X) :- X >= Y.
+max(X,Y,Y) :- X < Y.
+
+min(X,Y,X) :- X =< Y.
+min(X,Y,Y) :- X > Y.
