@@ -14,7 +14,11 @@ main() ->
   type_stuff(),
   map_stuff(),
   record_stuff(),
-  high_order_functions().
+  high_order_functions(),
+  fun_stuff("Chema"),
+  write_text("Writting in a text file"),
+  read_text(),
+  remove_file().
 
 preschool() -> 'Go to preschool'.
 kindergarten() -> 'Go to kindergarten'.
@@ -149,3 +153,24 @@ high_order_functions() ->
 
   % or we can pass the anon func directly
   lists:map(fun(N) -> N * 3 end, [1, 2, 3]).
+
+fun_stuff(N) ->
+  io:format("======= fun_stuff =======~n"),
+  FunStuff = fun() -> io:fwrite("Hello ~p~n", [N]) end,
+  io:format("~p~n", [FunStuff()]).
+
+write_text(N) ->
+  io:format("======= write_text =======~n"),
+  {ok, FileHandler} = file:open("MyFile.txt", [write]), % [write|append|read]
+  file:write(FileHandler, N).
+
+read_text() ->
+  io:format("======= read_text =======~n"),
+  {ok, FileHandler} = file:open("MyFile.txt", [read]),
+  Words = file:read(FileHandler, 1024 * 1024),
+  io:fwrite("~p~n", [Words]).
+
+remove_file() ->
+  % https://erlang.org/doc/man/file.html#delete-1
+  io:format("======= remove_file =======~n"),
+  file:delete("MyFile.txt").
