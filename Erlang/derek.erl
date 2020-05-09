@@ -6,7 +6,8 @@
 
 main() ->
   what_grade(10),
-  say_hello(german).
+  say_hello(german),
+  string_stuff().
 
 preschool() -> 'Go to preschool'.
 kindergarten() -> 'Go to kindergarten'.
@@ -24,3 +25,25 @@ say_hello(Language) ->
     german -> 'Guten Tag';
     english -> 'Hello'
   end.
+
+string_stuff() ->
+  Str1 = "Random string",
+  Str2 = "Another string",
+
+  io:format("String: ~p ~p\n", [Str1, Str2]),
+
+  Str3 = io_lib:format("It's a ~s and ~s\n", [Str1, Str2]),
+  io:fwrite(Str3),
+
+  Str4 = concat(Str1, Str2),
+  io:format(Str4),
+
+  CharIndex = chr(Str4, $n),
+  io:format("~p~n", [CharIndex]),
+
+  Str5 = substr(Str4, 8, 6),
+  io:format("~p~n", [Str5]),
+
+  StrIndex = str(Str4, Str2),
+  io:format("~p~n", [StrIndex]),
+  io:format("~p~n", [to_lower(Str1)]).
