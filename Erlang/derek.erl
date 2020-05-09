@@ -20,7 +20,8 @@ main() ->
   read_text(),
   remove_file(),
   error_stuff(0),
-  macro_stuff(2, 3).
+  macro_stuff(2, 3),
+  concurrency_stuff().
 
 preschool() -> 'Go to preschool'.
 kindergarten() -> 'Go to kindergarten'.
@@ -122,9 +123,9 @@ type_stuff() ->
   List = integer_to_list(21),
   io:format("is_integer:~p | is_list:~p~n", [is_integer(List), is_list(List)]).
 
-loop_for(0, _) -> ok;
+loop_for(0, _) -> io:fwrite("~n"), ok;
 loop_for(Max, Min) when Max > 0 ->
-  io:fwrite("Num: ~p~n", [Max]),
+  io:fwrite("~p, ", [Max]),
   loop_for(Max - 1, Min).
 
 map_stuff() ->
@@ -198,3 +199,12 @@ error_stuff(N) ->
 
 macro_stuff(X, Y) ->
   io:format("~p~n", [?add(X, Y)]).
+
+%% concurrency
+get_id(M) -> io:fwrite("ID: ~p~n", [M]).
+spawner(Max, Min) -> spawn(fun() -> get_id(self()), loop_for(Max, Min) end).
+
+concurrency_stuff() ->
+  spawner(50, 1),
+  spawner(75, 51),
+  spawner(100, 76).
