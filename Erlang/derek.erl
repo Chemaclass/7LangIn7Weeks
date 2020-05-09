@@ -13,7 +13,8 @@ main() ->
   lc_stuff(),
   type_stuff(),
   map_stuff(),
-  record_stuff().
+  record_stuff(),
+  high_order_functions().
 
 preschool() -> 'Go to preschool'.
 kindergarten() -> 'Go to kindergarten'.
@@ -58,7 +59,7 @@ string_stuff() ->
   io:format("~p~n", [to_lower(Str1)]).
 
 tuple_stuff() ->
-  "======= Tuple stuff =======",
+  io:format("======= Tuple stuff =======~n"),
   MyData = {42, 175, 6.25},
   {A, _, C} = MyData,
   io:format("MyData: ~p, A:~p, C:~p\n", [MyData, A, C]),
@@ -68,7 +69,7 @@ tuple_stuff() ->
   io:format("The height is ~p~n", [H]).
 
 list_stuff() ->
-  "======= List stuff =======",
+  io:format("======= List stuff =======~n"),
   List1 = [1, 2, 3],
   List2 = [4, 5, 6],
   List3 = List1 ++ List2,
@@ -88,7 +89,7 @@ list_stuff() ->
   io:format("Head: ~p, Tail: ~p~n", [Head, Tail]).
 
 lc_stuff() ->
-  "======= List Comprehension stuff =======",
+  io:format("======= List Comprehension stuff =======~n"),
   List1 = [1, 2, 3],
   List2 = [10 * N || N <- List1],
   io:format("List2: ~p~n", [List2]),
@@ -102,7 +103,7 @@ lc_stuff() ->
   GreatTemp.
 
 type_stuff() ->
-  "======= Typestuff =======",
+  io:format("======= Typestuff =======~n"),
   is_atom(name),
   is_float(3.14),
   is_integer(10),
@@ -121,7 +122,7 @@ loop_for(Max, Min) when Max > 0 ->
   loop_for(Max - 1, Min).
 
 map_stuff() ->
-  "======= Map stuff =======",
+  io:format("======= Map stuff =======~n"),
   Bob = #{f_name => 'Bob', l_name => 'Smith'},
   io:fwrite("1st Name: ~p~n", [maps:get(f_name, Bob)]),
   io:fwrite("~p~n", [maps:remove(l_name, Bob)]),
@@ -130,7 +131,21 @@ map_stuff() ->
 -record(customer, {name = "", bal = 0.00}).
 
 record_stuff() ->
-  "======= Record stuff =======",
+  io:format("======= Record stuff =======~n"),
   Sally = #customer{name = "Sally Smith", bal = 100.00},
   Sally2 = Sally#customer{bal = 50},
   io:format("~p owes $ ~p~n", [Sally2#customer.name, Sally2#customer.bal]).
+
+double(N) -> N * 2.
+
+high_order_functions() ->
+  io:format("======= Hight order functions =======~n"),
+  % we can pass the function by its name
+  lists:map(fun double/1, [1, 2, 3]),
+
+  % or a function can be pass as a variable"
+  Double = fun(N) -> N * 2 end,
+  lists:map(Double, [1, 2, 3]),
+
+  % or we can pass the anon func directly
+  lists:map(fun(N) -> N * 3 end, [1, 2, 3]).
