@@ -19,7 +19,8 @@ main() ->
   write_text("Writting in a text file"),
   read_text(),
   remove_file(),
-  error_stuff(0).
+  error_stuff(0),
+  macro_stuff(2, 3).
 
 preschool() -> 'Go to preschool'.
 kindergarten() -> 'Go to kindergarten'.
@@ -191,3 +192,9 @@ error_stuff(N) ->
   catch
     _:_ -> "File doesn't Exists" % this will be triggered/rendered
   end.
+
+% macros
+-define(add(X, Y), {X + Y}).
+
+macro_stuff(X, Y) ->
+  io:format("~p~n", [?add(X, Y)]).
