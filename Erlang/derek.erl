@@ -18,7 +18,8 @@ main() ->
   fun_stuff("Chema"),
   write_text("Writting in a text file"),
   read_text(),
-  remove_file().
+  remove_file(),
+  error_stuff(0).
 
 preschool() -> 'Go to preschool'.
 kindergarten() -> 'Go to kindergarten'.
@@ -174,3 +175,19 @@ remove_file() ->
   % https://erlang.org/doc/man/file.html#delete-1
   io:format("======= remove_file =======~n"),
   file:delete("MyFile.txt").
+
+error_stuff(N) ->
+  try
+    Ans = 2 / N,
+    Ans
+  catch
+    error:badarith -> "Can't divide by zero"
+  end,
+  % and another exception by file handling
+  try
+    {ok, File} = file:open("MyFile.txt", [read]),
+    Words = file:read(File, 1024 * 1024),
+    io:fwrite("~p~n", [Words])
+  catch
+    _:_ -> "File doesn't Exists" % this will be triggered/rendered
+  end.
