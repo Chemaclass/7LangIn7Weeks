@@ -2,7 +2,7 @@
 
 -module(derek).
 -import(string, [len/1, concat/2, chr/2, substr/3, str/2, to_lower/1, to_upper/1]).
--export([main/0]).
+-export([main/0, loop_for/2]).
 
 main() ->
   what_grade(10),
@@ -11,7 +11,9 @@ main() ->
   tuple_stuff(),
   list_stuff(),
   lc_stuff(),
-  type_stuff().
+  type_stuff(),
+  map_stuff(),
+  record_stuff().
 
 preschool() -> 'Go to preschool'.
 kindergarten() -> 'Go to kindergarten'.
@@ -113,4 +115,22 @@ type_stuff() ->
   List = integer_to_list(21),
   io:format("is_integer:~p | is_list:~p~n", [is_integer(List), is_list(List)]).
 
+loop_for(0, _) -> ok;
+loop_for(Max, Min) when Max > 0 ->
+  io:fwrite("Num: ~p~n", [Max]),
+  loop_for(Max - 1, Min).
 
+map_stuff() ->
+  "======= Map stuff =======",
+  Bob = #{f_name => 'Bob', l_name => 'Smith'},
+  io:fwrite("1st Name: ~p~n", [maps:get(f_name, Bob)]),
+  io:fwrite("~p~n", [maps:remove(l_name, Bob)]),
+  maps:put(address, "123 main", Bob).
+
+-record(customer, {name = "", bal = 0.00}).
+
+record_stuff() ->
+  "======= Record stuff =======",
+  Sally = #customer{name = "Sally Smith", bal = 100.00},
+  Sally2 = Sally#customer{bal = 50},
+  io:format("~p owes $ ~p~n", [Sally2#customer.name, Sally2#customer.bal]).
