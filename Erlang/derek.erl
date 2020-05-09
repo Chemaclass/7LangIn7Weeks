@@ -10,7 +10,8 @@ main() ->
   string_stuff(),
   tuple_stuff(),
   list_stuff(),
-  lc_stuff().
+  lc_stuff(),
+  type_stuff().
 
 preschool() -> 'Go to preschool'.
 kindergarten() -> 'Go to kindergarten'.
@@ -90,12 +91,26 @@ lc_stuff() ->
   List2 = [10 * N || N <- List1],
   io:format("List2: ~p~n", [List2]),
 
-  List3 = [1,2,3,4,5,6],
-  List4 = [N || N<-List3, N rem 2 == 0], % even values
+  List3 = [1, 2, 3, 4, 5, 6],
+  List4 = [N || N <- List3, N rem 2 == 0], % even values
   io:format("List4: ~p~n", [List4]),
 
-  Weather = [{murcia, 50},{madrid, 40}, {miami, 25}, {bullas, 30}],
+  Weather = [{murcia, 50}, {madrid, 40}, {miami, 25}, {bullas, 30}],
   GreatTemp = [{City, Temp} || {City, Temp} <- Weather, Temp >= 35],
   GreatTemp.
+
+type_stuff() ->
+  "======= Typestuff =======",
+  is_atom(name),
+  is_float(3.14),
+  is_integer(10),
+  is_boolean(false),
+  is_list([1, 2, 3]),
+  is_tuple({height, 6.93}),
+  % you can convert from one to another using `type_to_type()`
+  % atom_to_binary, atom_to_list, binary_to_atom, fun_to_list, iolist_to_atom, pid_to_list,...
+
+  List = integer_to_list(21),
+  io:format("is_integer:~p | is_list:~p~n", [is_integer(List), is_list(List)]).
 
 
