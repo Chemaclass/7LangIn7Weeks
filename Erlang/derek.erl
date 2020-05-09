@@ -2,17 +2,25 @@
 
 -module(derek).
 -import(string, [len/1, concat/2, chr/2, substr/3, str/2, to_lower/1, to_upper/1]).
--export([main/0, add/2, add/3]).
+-export([main/0]).
 
 main() ->
-  do_math(5, 4).
+  what_grade(10),
+  say_hello(german).
 
-hello_world() -> io:format("Hello Chema\n").
+preschool() -> 'Go to preschool'.
+kindergarten() -> 'Go to kindergarten'.
+grade_school() -> 'Go to grade school'.
 
-add(N1, N2) -> hello_world(), N1 + N2.
-add(N1, N2, N3) -> hello_world(), N1 + N2 + N3.
+what_grade(N) ->
+  if N < 5 -> preschool();
+    N == 5 -> kindergarten();
+    N > 5 -> grade_school()
+  end.
 
-% There is also (math:) sin, cos, tan, asin, acos, atan,
-% sinh, cosh, tanh, asinh, acosh, atanh, and lots of more...
-do_math(A, _) ->
-  rand:uniform(A).
+say_hello(Language) ->
+  case Language of
+    french -> 'Bonjour';
+    german -> 'Guten Tag';
+    english -> 'Hello'
+  end.
