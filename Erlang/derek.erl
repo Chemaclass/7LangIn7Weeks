@@ -8,7 +8,8 @@ main() ->
   what_grade(10),
   say_hello(german),
   string_stuff(),
-  tuple_stuff().
+  tuple_stuff(),
+  list_stuff().
 
 preschool() -> 'Go to preschool'.
 kindergarten() -> 'Go to kindergarten'.
@@ -61,3 +62,24 @@ tuple_stuff() ->
   Data2 = {height, 1.89},
   {height, H} = Data2,
   io:format("The height is ~p~n", [H]).
+
+list_stuff() ->
+  "======= List stuff =======",
+  List1 = [1, 2, 3],
+  List2 = [4, 5, 6],
+  List3 = List1 ++ List2,
+  io:format("List3: ~p~n", [List3]),
+
+  List4 = List3 -- List1,
+  io:format("List4: ~p~n", [List4]),
+
+  hd(List4), %retrieve the head of a list
+  tl(List4), %retrieve the tail of a list
+
+  % or you can get the head and tail by using [Head|Tail] like:
+  List5 = [3 | List4],
+  io:format("List5: ~p~n", [List5]),
+
+  [Head | Tail] = List5,
+  io:format("Head: ~p, Tail: ~p~n", [Head, Tail]).
+
