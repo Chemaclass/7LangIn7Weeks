@@ -9,7 +9,8 @@ main() ->
   say_hello(german),
   string_stuff(),
   tuple_stuff(),
-  list_stuff().
+  list_stuff(),
+  lc_stuff().
 
 preschool() -> 'Go to preschool'.
 kindergarten() -> 'Go to kindergarten'.
@@ -82,4 +83,19 @@ list_stuff() ->
 
   [Head | Tail] = List5,
   io:format("Head: ~p, Tail: ~p~n", [Head, Tail]).
+
+lc_stuff() ->
+  "======= List Comprehension stuff =======",
+  List1 = [1, 2, 3],
+  List2 = [10 * N || N <- List1],
+  io:format("List2: ~p~n", [List2]),
+
+  List3 = [1,2,3,4,5,6],
+  List4 = [N || N<-List3, N rem 2 == 0], % even values
+  io:format("List4: ~p~n", [List4]),
+
+  Weather = [{murcia, 50},{madrid, 40}, {miami, 25}, {bullas, 30}],
+  GreatTemp = [{City, Temp} || {City, Temp} <- Weather, Temp >= 35],
+  GreatTemp.
+
 
