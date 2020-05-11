@@ -1,0 +1,18 @@
+[Erlang](https://www.erlang.org/)
+
+* [Awesome Erlang](https://github.com/drobakowski/awesome-erlang#Erlang-reading)
+
+[**Erlang**](https://en.wikipedia.org/wiki/Erlang_(programming_language)) is a general-purpose, concurrent, functional programming language, and a garbage-collected runtime syste. The term Erlang is used interchangeably with Erlang/OTP, or Open Telecom Platform (OTP), which consists of the Erlang runtime system, several ready-to-use components (OTP) mainly written in Erlang, and a set of design principles for Erlang programs.
+
+The Erlang runtime system is designed for systems with these traits:
+
+- Distributed
+- Fault-tolerant
+- Soft real-time
+- Highly available, non-stop applications
+- Hot swapping, where code can be changed without stopping a system
+
+It was originally proprietary software within Ericsson, developed by Joe Armstrong, Robert Virding, and Mike Williams in 1986, but was released as free and open-source software in 1998. Erlang/OTP is supported and maintained by the Open Telecom Platform (OTP) product unit at Ericsson.
+
+
+
