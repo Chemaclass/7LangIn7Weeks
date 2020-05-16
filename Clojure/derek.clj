@@ -67,4 +67,14 @@
   (swap! atomEx inc)
   (println "Increment x=" @atomEx))
 
-(atom-manipulation 5)
+(defn agent-ex []
+  (def tickets-sold (agent 0))
+  (send tickets-sold + 15)
+  (println "Tickets " @tickets-sold)
+
+  (send tickets-sold + 10)
+  (await-for 100 tickets-sold)
+  (println "Tickets " @tickets-sold)
+  (shutdown-agents))
+
+(agent-ex)
