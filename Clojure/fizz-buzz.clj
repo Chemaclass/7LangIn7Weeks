@@ -21,10 +21,11 @@
     (if (<= i 100)
       (do
         (cond
-         (and (= (rem i 3) 0) (= (rem i 5) 0)) (println "FizzBuzz")
-         (= (rem i 3) 0)                       (println "Fizz")
-         (= (rem i 5) 0)                       (println "Buzz")
-         :else                                 (println i))
+         (and (= (rem i 3) 0)
+              (= (rem i 5) 0)) (println "FizzBuzz")
+         (= (rem i 3) 0)       (println "Fizz")
+         (= (rem i 5) 0)       (println "Buzz")
+         :else                 (println i))
         (recur (inc i))))))
 
 (fizz-buzz-cond)
