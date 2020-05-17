@@ -55,4 +55,6 @@ encapsulation but embraces polymorphism.
 
 ## References
 
-* https://youtu.be/vfnL5Dai77Q
+* [The Clojure Language - Brian Will](https://www.youtube.com/watch?v=9A9qsaZZefw&list=PLAC43CFB134E85266)
+* [Solving Problems the Clojure Way - Rafal Dittwald](https://youtu.be/vK1DazRK_a0)
+* [Effective Programs - 10 Years of Clojure - Rich Hickey](https://youtu.be/2V1FtfBDsLU)
