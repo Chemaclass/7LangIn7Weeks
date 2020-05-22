@@ -114,3 +114,105 @@ whatGrade age
   | (age > 10) && (age <= 14) = "Middle School"
   | (age > 14) && (age <= 18) = "High School"
   | otherwise = "Go to college"
+
+-- where clauses
+batAvgRatting :: Double -> Double -> String
+batAvgRatting hits atBats
+  | avg <= 0.200 = "Terrible batting Average"
+  | avg <= 0.150 = "Average Player"
+  | otherwise = "You're a Superstar"
+  where avg = hits / atBats
+
+getListItems :: [Int] -> String
+getListItems [] = "Your list is empty"
+getListItems (h:[]) = "Your list start with " ++ show h
+getListItems (h:t) = "THe 1st item is "++ show h ++ " and the rest are " ++ show t
+
+getFirstItem :: String -> String 
+getFirstItem [] = "Empty string"
+getFirstItem all@(h:t) = "The first letter in " ++ all ++ " is " ++ show h
+
+-- high order functions
+times4 :: Int -> Int
+times4 n = n * 4
+listTimes4 = map times4 [1,2,3,4]
+
+mulBy4 :: [Int] -> [Int]
+mulBy4 [] = []
+mulBy4 (h:t) = times4 h : mulBy4 t 
+
+areStringsEq :: [Char] -> [Char] -> Bool
+areStringsEq [] [] = True
+areStringsEq (h:t) (h2:t2) = h == h2 && areStringsEq t t2
+areStringsEq _ _ = False
+
+doMul :: (Int -> Int) -> Int
+doMul func = func 3
+num3Times4 = doMul times4
+
+getAddFunc :: Int -> (Int -> Int)
+getAddFunc x y = x + y
+adds3 = getAddFunc 3
+fourPlus3 = adds3 4
+
+threePlusList = map adds3 [1,2,3,4]
+
+-- lambdas
+dbl1To10 = map (\n -> n * 2) [1..10]
+
+-- conditions
+doubleEvenNumber n = 
+  if (n `mod` 2 /= 0)
+    then n
+    else n * 2
+
+getSchoolClass :: Int -> String 
+getSchoolClass n = case n of 
+  5 -> "Go to kindergarten"
+  6 -> "Go to elementary school"
+  _ -> "Go away"
+
+-- modules
+-- module SampFunctions (getSchoolClass, doubleEvenNumber) where 
+
+-- data types
+-- enumerator types
+data BaseballPlayer = Pitcher 
+                    | Catcher
+                    | Infielder
+                    | Outfield
+  deriving Show
+
+barryBonds :: BaseballPlayer -> Bool
+barryBonds Outfield = True
+barryInOF = print(barryBonds Outfield)
+
+-- custom types
+data Customer = Customer String String Double 
+  deriving Show 
+
+tomSmith :: Customer
+tomSmith = Customer "Tom Smith" "123 Main" 20.50
+
+getBalance :: Customer -> Double
+getBalance (Customer _ _ b) = b
+
+-- Rock Paper Scissors
+data RPS = Rock | Paper | Scissors
+shoot :: RPS -> RPS -> String 
+shoot Paper Rock = "Paper beats Rock"
+shoot Rock Scissors = "Rock Beats Scissors"
+shoot Scissors Paper = "Scissors Beat Paper"
+-- etc ...
+shoot _ _ = "Error"
+
+data Shape = Circle Float Float Float 
+           | Rectangle Float Float Float Float
+  deriving Show 
+
+area :: Shape -> Float
+area (Circle  _ _ r) = pi * r ^ 2
+area (Rectangle x y x2 y2) = (abs $ x2-x) * (abs(y2-y))
+
+areaOfCircle = area (Circle 50 60 20)
+areaOfRect = area $ Rectangle 10 10 100 100
