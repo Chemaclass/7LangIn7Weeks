@@ -279,3 +279,6 @@ writeAndReadFile = do
 
   removeFile "test.txt"
 
+-- extra
+
+fib = 1 : 1 : [a + b | (a, b) <- zip fib (tail fib)]
