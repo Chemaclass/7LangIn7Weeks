@@ -61,3 +61,56 @@ multOfList = foldl (*) 1 [1,2,3,4,5]
 
 pow3List = [3^n | n <- [1..10]]
 multTable = [[x * y | y <- [1..10]] | x <- [1..10]]
+
+-- Tuples
+randTuple = (1, "Random Tuple")
+bobSmith = ("Bob Smith", 52)
+bobsName = fst bobSmith
+bobsAge = snd bobSmith
+names = ["Chema", "Juan", "Sus"]
+addresses = ["Berlin","Granada","Madrid"]
+namesNAddress = zip names addresses
+
+
+-- functions
+helloFunction = do 
+  putStrLn "What's your name"
+  name <- getLine
+  putStrLn ("Hello " ++ name)
+
+addMe :: Int -> Int -> Int
+addMe x y = x + y
+
+addTuples :: (Int, Int) -> (Int, Int) -> (Int, Int)
+addTuples (x, y) (x2, y2) = (x + x2, y + y2)
+
+whatAge :: Int -> String
+whatAge 16 = "You can drive"
+whatAge 18 = "You can vote"
+whatAge 21 = "You're an adult"
+whatAge _ = "Nothing important..."
+
+-- Recursion
+factorial :: Int -> Int
+factorial 0 = 1
+factorial n = n * factorial(n-1)
+
+prodFact n = product [1..n]
+
+
+-- Guards
+isOdd :: Int -> Bool
+isOdd n
+  | n `mod` 2 == 0 = False
+  | otherwise = True
+
+isEven n = n `mod` 2 == 0
+
+whatGrade :: Int -> String
+whatGrade age
+  | (age < 5) = "Keep sleeping"
+  | (age >= 5) && (age <= 6) = "Kinderganten"
+  | (age > 6) && (age <= 10) = "Elementary School"
+  | (age > 10) && (age <= 14) = "Middle School"
+  | (age > 14) && (age <= 18) = "High School"
+  | otherwise = "Go to college"
