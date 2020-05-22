@@ -6,6 +6,7 @@ comments
 
 import Data.List
 import System.IO 
+import System.Directory
 
 -- Built in math functions
 piVal = pi
@@ -259,3 +260,22 @@ instance MyEq ShirtSize where
   areEqual _ _ = False
 
 newSize = areEqual M M
+
+-- IO
+sayHello = do
+  putStrLn "What's your name"
+  name <- getLine
+  putStrLn $ "Hello " ++ name
+
+writeAndReadFile = do
+  theFile <- openFile "test.txt" WriteMode
+  hPutStrLn theFile ("Random line of text")
+  hClose theFile
+
+  theFile <- openFile "test.txt" ReadMode
+  contents <- hGetContents theFile
+  putStr contents
+  hClose theFile
+
+  removeFile "test.txt"
+
