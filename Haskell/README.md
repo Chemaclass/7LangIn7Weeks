@@ -28,4 +28,5 @@
 - [Functional Programming & Haskell](https://www.youtube.com/watch?v=LnX3B9oaKzw)
 - [What is a Monad?](https://youtu.be/t1e8gqXLbsU)
 - [All about monads](https://wiki.haskell.org/All_About_Monads)
-- [Haskell Tutorial](https://www.youtube.com/watch?v=02_H3LjqMr8)
+- [Haskell for Imperative Programmers Tutorial](https://www.youtube.com/watch?v=Vgu82wiiZ90&list=PLe7Ei6viL6jGp1Rfu0dil1JH1SHk9bgDV)
+- [Basic Haskell Tutorial](https://www.youtube.com/watch?v=02_H3LjqMr8)
