@@ -136,3 +136,34 @@ m >>= return = m
 ## Associativity
 m >>= (\x -> k x >>= h) = (m >> k) >>= h
 -}
+
+
+------------------------------------
+------- Infinite Lists -------------
+------------------------------------
+
+ones = 1 : ones
+nat = asc 1
+  where asc n = n : (asc $ n+1)
+-- OR => nat = 0 : map (+1) nat
+evens = map (*2) nat
+odds = filter (\x -> mod x 2 == 1) nat
+
+{-
+We can:
+* Transform (map, filter, list comprenhensions)
+* Take and drop (and use pattern matching)
+* Build new lists frominfinite lists
+
+We cannot:
+* Evaluate the whole list
+* Evaluate the end
+
+So, for example, we can not use folding for infinite 
+lists, because we need to know the end of the list.
+
+For example:
+Primes, Fibonacci Sequence, Cumulative Sums...
+-}
+
+fibs = 0 : 1 : zipWith (+) fibs (tail fibs)
