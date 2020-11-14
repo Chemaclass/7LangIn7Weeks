@@ -1,3 +1,0 @@
-/Users/chemaclass/Code/7LangIn7Weeks/Cpp/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/Users/chemaclass/Code/7LangIn7Weeks/Cpp/cmake-build-debug/CMakeFiles/edit_cache.dir
-/Users/chemaclass/Code/7LangIn7Weeks/Cpp/cmake-build-debug/CMakeFiles/Cpp.dir
